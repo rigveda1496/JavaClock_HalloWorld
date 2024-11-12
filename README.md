@@ -31,56 +31,35 @@ Javaで作成された時計プログラムです。時計の機能を実現す�
 
 ![Eclipseの開発環境](https://example.com/eclipse-env.png)
 
-## インポートするライブラリ
+## コード解説
 
-* `java.awt` : JavaのGUIライブラリ
- + `Color` : 色のクラス
- + `FlowLayout` : レイアウトマネージャーのクラス
- + `Font` : フォントのクラス
-* `java.text` : Javaのテキストライブラリ
- + `SimpleDateFormat` : 日付と時間のフォーマットのクラス
-* `java.util` : Javaのユーティリティライブラリ
- + `Calendar` : 日付と時間のクラス
-* `javax.swing` : Javaのスイングライブラリ
- + `JFrame` : フレームのクラス
- + `JLabel` : ラベルのクラス
+### ウィンドウ設定部分
 
-![インポートするライブラリ](https://example.com/import-libraries.png)
+* `this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);` : ウィンドウが閉じたときにプログラムが終了するように設定しています。JavaのGUIアプリケーションにおける基本的な設定であり、ユーザーが使いやすいアプリを作るために重要です。
 
-## クラスと変数
+### レイアウトとサイズ設定
 
-* `MyFrame` : 時計のウィンドウを表示するためのクラス
-* `Calendar` : 日付と時間を取得するためのクラス
- + `calendar` : カレンダーのインスタンス
-* `SimpleDateFormat` : 日付と時間のフォーマットを指定するためのクラス
- + `timeFormat` : 時間のフォーマット
- + `dayFormat` : 日付のフォーマット
- + `dateFormat` : 日付のフォーマット
-* `JLabel` : 時計のウィンドウに表示されるラベルのクラス
- + `timeLabel` : 時間のラベル
- + `dayLabel` : 日付のラベル
- + `dateLabel` : 日付のラベル
-* `String` : 日付と時間の文字列
- + `time` : 時間の文字列
- + `day` : 日付の文字列
- + `date` : 日付の文字列
+* `this.setLayout(new FlowLayout());` : FlowLayoutを使って、ウィンドウ内の各要素（時刻、曜日、日付）を順番に配置しています。
+* `this.setSize(350, 200);` : ウィンドウのサイズを固定し、見やすいレイアウトにしています。この配置は、他のGUIアプリケーションでも応用できます。
 
-![クラスと変数](https://example.com/classes-and-variables.png)
+### 時間フォーマット設定
 
-## コード
+* `timeFormat = new SimpleDateFormat("hh:mm:ss a");` : SimpleDateFormatを用いて、時刻や日付の表示形式を設定しています。例えば、「hh:mm:ss a」で時間を「午前/午後」形式にフォーマットし、「EEEE」で曜日を表示しています。表示形式の指定はユーザーの利便性を高めます。
 
-```java
-// Java時計プログラムのコード
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+### ラベル設定（色とフォントのカスタマイズ）
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+* `timeLabel.setFont(new Font("", Font.PLAIN, 50));` : 時間表示用のラベルにカスタムフォントを設定しています。
+* `timeLabel.setForeground(new Color(0x00FF00));` : 時間表示用のラベルに文字色を設定しています。
+* `timeLabel.setBackground(Color.black);` : 時間表示用のラベルに背景色を設定しています。
+* `timeLabel.setOpaque(true);` : 時間表示用のラベルに背景を設定しています。このカスタマイズにより、見やすく視認性の高いデザインが実現されています。ユーザーが画面をすぐに読み取れるように工夫しています。
 
-public class MyFrame extends JFrame{
- 
-    //...
-}
+### 無限ループで時計を更新する部分
+
+* `while(true) {... }` : whileループを使って、1秒ごとに時刻と日付を更新しています。
+* `Thread.sleep(1000);` : 1秒の待機時間を設けることで、毎秒ごとに正確な時刻を表示します。この仕組みによって、ユーザーがリアルタイムで時間の経過を確認できるようになります。
+
+### 実行時のウィンドウプレビュー
+
+![実行時のウィンドウ](https://example.com/window-preview.png)
+
+* アプリケーションを実行したときの画面のスクリーンショットを追加します。時計が中央に配置され、現在の時刻、曜日、日付が見やすく表示されている様子を示します。アプリが実際に動作する様子を視覚的に確認できるため、プロジェクトの成果が一目でわかります。特にUIの配置や色のカスタマイズの効果がここで分かります。

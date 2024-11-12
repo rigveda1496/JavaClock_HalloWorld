@@ -8,10 +8,10 @@ import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-// MyFrameクラス: 時計のウィンドウを表示するために使用されるクラス
+// MyFrameクラス: 時計のウィンドウを表示するために使用するクラス
 public class MyFrame extends JFrame{
  
- // カレンダー: 日付と時間を取得するために使用されるクラス
+ // カレンダー: 日付と時間を取得するために使用するクラス
  Calendar calendar;
  
  // 日付と時間のフォーマット: SimpleDateFormatクラスを使用して日付と時間をフォーマットする
@@ -90,7 +90,6 @@ public class MyFrame extends JFrame{
   try {
    Thread.sleep(1000);
   } catch (InterruptedException e) {
-   // TODO Auto-generated catch block
    e.printStackTrace();
   }
   }

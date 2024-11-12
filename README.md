@@ -1,2 +1,2 @@
-# Java-_HaloWorld
+# JavaClock_HalloWorld
 Java時計のポートフォリオ

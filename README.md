@@ -14,9 +14,9 @@ Javaで作成された時計プログラムです。時計の機能を実現す�
 
 ## 使い方
 
-1. プログラムをダウンロードします。
-2. プログラムを実行します。
-3. 時計の表示を確認します。
+1. Pleiadesをインストールします。
+2. Eclipseを実行します。
+3. MyClockを右クリック→デバック→Javaアプリケーションで実行します。
 
 ![プログラムの実行](img/ProgramExecution.png)
 
@@ -40,6 +40,7 @@ this.setTitle("My Clock Program");                   // ウィンドウのタイ
 this.setLayout(new FlowLayout());                    // レイアウトの設定
 this.setSize(350, 200);                              // サイズの固定
 this.setResizable(false);                            // サイズ変更不可
+```
 * `this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);` : ウィンドウが閉じたときにプログラムが終了するように設定しています。JavaのGUIアプリケーションにおける基本的な設定であり、ユーザーが使いやすいアプリを作るために重要です。
 
 ### レイアウトとサイズ設定
@@ -48,18 +49,39 @@ this.setResizable(false);                            // サイズ変更不可
 * `this.setSize(350, 200);` : ウィンドウのサイズを固定し、見やすいレイアウトにしています。この配置は、他のGUIアプリケーションでも応用できます。
 
 ### 時間フォーマット設定
-
+```java
+timeFormat = new SimpleDateFormat("hh:mm:ss a");     // 時刻フォーマット
+dayFormat = new SimpleDateFormat("EEEE");            // 曜日フォーマット
+dateFormat = new SimpleDateFormat("yyyy.MM.dd G");   // 日付フォーマット
+```
 * `timeFormat = new SimpleDateFormat("hh:mm:ss a");` : SimpleDateFormatを用いて、時刻や日付の表示形式を設定しています。例えば、「hh:mm:ss a」で時間を「午前/午後」形式にフォーマットし、「EEEE」で曜日を表示しています。表示形式の指定はユーザーの利便性を高めます。
 
 ### ラベル設定（色とフォントのカスタマイズ）
+```java
 
+```
 * `timeLabel.setFont(new Font("", Font.PLAIN, 50));` : 時間表示用のラベルにカスタムフォントを設定しています。
 * `timeLabel.setForeground(new Color(0x00FF00));` : 時間表示用のラベルに文字色を設定しています。
 * `timeLabel.setBackground(Color.black);` : 時間表示用のラベルに背景色を設定しています。
 * `timeLabel.setOpaque(true);` : 時間表示用のラベルに背景を設定しています。このカスタマイズにより、見やすく視認性の高いデザインが実現されています。ユーザーが画面をすぐに読み取れるように工夫しています。
 
 ### 無限ループで時計を更新する部分
+```java
+while(true) {
+    time = timeFormat.format(Calendar.getInstance().getTime());
+    timeLabel.setText(time);
+    day = dayFormat.format(Calendar.getInstance().getTime());
+    dayLabel.setText(day);
+    date = dateFormat.format(Calendar.getInstance().getTime());
+    dateLabel.setText(date);
 
+    try {
+        Thread.sleep(1000);                         // 1秒ごとに更新
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
+```
 * `while(true) {... }` : whileループを使って、1秒ごとに時刻と日付を更新しています。
 * `Thread.sleep(1000);` : 1秒の待機時間を設けることで、毎秒ごとに正確な時刻を表示します。この仕組みによって、ユーザーがリアルタイムで時間の経過を確認できるようになります。
 
@@ -69,8 +91,19 @@ this.setResizable(false);                            // サイズ変更不可
 
 * アプリケーションを実行したときの画面のスクリーンショットを追加します。時計が中央に配置され、現在の時刻、曜日、日付が見やすく表示されている様子を示します。アプリが実際に動作する様子を視覚的に確認できるため、プロジェクトの成果が一目でわかります。特にUIの配置や色のカスタマイズの効果がここで分かります。
 
-## コード
+## コード全体
+```Main
+public class Main {
 
+	public static void main(String[] args) {
+		
+		new MyFrame();
+
+	}
+
+}
+``` 
+``` MyFrame
 // インポートするライブラリ
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -168,3 +201,4 @@ public class MyFrame extends JFrame{
   }
  }
 }
+```

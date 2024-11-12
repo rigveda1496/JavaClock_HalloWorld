@@ -67,22 +67,20 @@ Javaで作成された時計プログラムです。時計の機能を実現す�
 
 ![クラスと変数](https://example.com/classes-and-variables.png)
 
-## コンストラクタ
+## コード
 
-* `MyFrame()` : 時計のウィンドウを初期化するためのコンストラクタ
- + `this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)` : ウィンドウの終了方法を設定する
- + `this.setTitle("My Clock Program")` : ウィンドウのタイトルを設定する
- + `this.setLayout(new FlowLayout())` : ウィンドウのレイアウトを設定する
- + `this.setSize(350,200)` : ウィンドウのサイズを設定する
- + `this.setResizable(false)` : ウィンドウのサイズを変更できるかどうかを設定する
- + `timeFormat = new SimpleDateFormat("hh:mm:ss a")` : 時間のフォーマットを設定する
- + `dayFormat = new SimpleDateFormat("EEEE")` : 日付のフォーマットを設定する
- + `dateFormat = new SimpleDateFormat("yyyy.MM.dd G")` : 日付のフォーマットを設定する
- + `timeLabel = new JLabel()` : 時間のラベルを初期化する
- + `timeLabel.setFont(new Font("",Font.PLAIN,50))` : 時間のラベルのフォントを設定する
- + `timeLabel.setForeground(new Color(0x00FF00))` : 時間のラベルの色を設定する
- + `timeLabel.setOpaque(true)` : 時間のラベルの背景を設定する
- + `dayLabel = new JLabel()` : 日付のラベルを初期化する
- + `dayLabel.setFont(new Font("monospaced",Font.PLAIN,35))` : 日付のラベルのフォントを設定する
- + `dateLabel = new JLabel()` : 日付のラベルを初期化する
- + `dateLabel.setFont(new Font("",Font.PLAIN,25))
+```java
+// Java時計プログラムのコード
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class MyFrame extends JFrame{
+ 
+    //...
+}

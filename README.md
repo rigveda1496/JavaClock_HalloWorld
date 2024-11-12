@@ -10,7 +10,7 @@ Javaで作成された時計プログラムです。時計の機能を実現す�
 * 時間の更新
 * 日付の表示
 
-![時計の表示](https://example.com/clock.png)
+![時計の表示](img/ClockWindow.png)
 
 ## 使い方
 
@@ -58,6 +58,17 @@ dateFormat = new SimpleDateFormat("yyyy.MM.dd G");   // 日付フォーマット
 
 ### ラベル設定（色とフォントのカスタマイズ）
 ```java
+timeLabel = new JLabel();
+timeLabel.setFont(new Font("", Font.PLAIN, 50));     // 時間表示用のフォントサイズとスタイル
+timeLabel.setForeground(new Color(0x00FF00));        // 時間表示の文字色（緑）
+timeLabel.setBackground(Color.black);                // 時間表示の背景色（黒）
+timeLabel.setOpaque(true);                           // 背景を不透明に設定
+
+dayLabel = new JLabel();
+dayLabel.setFont(new Font("monospaced", Font.PLAIN, 35)); // 曜日表示用フォント設定
+
+dateLabel = new JLabel();
+dateLabel.setFont(new Font("", Font.PLAIN, 25));     // 日付表示用フォント設定
 
 ```
 * `timeLabel.setFont(new Font("", Font.PLAIN, 50));` : 時間表示用のラベルにカスタムフォントを設定しています。

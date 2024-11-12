@@ -34,7 +34,12 @@ Javaで作成された時計プログラムです。時計の機能を実現す�
 ## コード解説
 
 ### ウィンドウ設定部分
-
+```java
+this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ウィンドウを閉じたときに終了
+this.setTitle("My Clock Program");                   // ウィンドウのタイトル
+this.setLayout(new FlowLayout());                    // レイアウトの設定
+this.setSize(350, 200);                              // サイズの固定
+this.setResizable(false);                            // サイズ変更不可
 * `this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);` : ウィンドウが閉じたときにプログラムが終了するように設定しています。JavaのGUIアプリケーションにおける基本的な設定であり、ユーザーが使いやすいアプリを作るために重要です。
 
 ### レイアウトとサイズ設定
